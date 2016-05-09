@@ -41,6 +41,7 @@ class VideoPlayer {
       });
   }
 
+
   /**
    * Create a new timeline manager and add it to the Array
    * of TimeLineManagers which are updated every time
@@ -207,32 +208,6 @@ class TimeLineManager {
       tl.runForwardTil(this.times[1]);
     }
     return this.timeLines.length;
-  }
-}
-
-
-
-class NextPromise {
-  static ind = 0;
-  static actions = [()=>{}];
-
-  static next() {
-    if (NextPromise.actions.length > NextPromise.ind) {
-      NextPromise.ind++;
-      return (() => {
-        NextPromise.factory(NextPromise.actions[NextPromise.ind-1]);
-      })();
-    }
-  }
-
-  static factory( fn:()=>any ) {
-    const p = new Promise((resolve, reject) => {
-      window.setTimeout(() => {
-        fn();
-        resolve({fn: fn});
-      }, 600);
-    });
-    return p.then( NextPromise.next );
   }
 }
 

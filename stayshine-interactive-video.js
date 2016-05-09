@@ -176,25 +176,4 @@ class TimeLineManager {
         return this.timeLines.length;
     }
 }
-class NextPromise {
-    static next() {
-        if (NextPromise.actions.length > NextPromise.ind) {
-            NextPromise.ind++;
-            return (() => {
-                NextPromise.factory(NextPromise.actions[NextPromise.ind - 1]);
-            })();
-        }
-    }
-    static factory(fn) {
-        const p = new Promise((resolve, reject) => {
-            window.setTimeout(() => {
-                fn();
-                resolve({ fn: fn });
-            }, 600);
-        });
-        return p.then(NextPromise.next);
-    }
-}
-NextPromise.ind = 0;
-NextPromise.actions = [() => { }];
 //# sourceMappingURL=stayshine-interactive-video.js.map
