@@ -42,6 +42,6 @@ tl = new TimeLine();
 // And then you could repeat the process adding events to this timeline..
 ```
 #### Todo:
-> Add Promises
-> Demo DOM Events running at 60fps with video.
+ > Add Promises
+ > Demo DOM Events running at 60fps with video.
 
